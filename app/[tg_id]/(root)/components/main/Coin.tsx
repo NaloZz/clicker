@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
 import { User } from "@prisma/client";
 import { useAtom, useSetAtom } from "jotai";
