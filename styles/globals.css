@@ -11,12 +11,11 @@
     -ms-user-select: none;     
     user-select: none;
 
-    --app-color: linear-gradient(90deg, #FF4500, #FF6347, #FFD700, #FF8C00);
+    --app-color: #FF4500;
 
     @apply p-0 m-0 min-w-0
   }
   html, :root, body {
     @apply text-white bg-black font-sans
-    background: var(--app-color);
   }
 }
