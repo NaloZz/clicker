@@ -38,7 +38,7 @@ export default async function Home({
 					<Nav />
 
  				<div className="absolute bottom-54 left-1/2 transform -translate-x-1/2 text-white text-2xl font-extrabold">
-        				BURN IT ALL 🔥
+        				BURN IT ALL
     				</div>
 
 					<EnergyBar user={user} />
