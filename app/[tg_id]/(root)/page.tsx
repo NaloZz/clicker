@@ -37,14 +37,24 @@ export default async function Home({
 				<div className="flex flex-col gap-5 self-stretch mt-auto w-[calc(100vw-32px)] fixed bottom-8 z-10">
 					<Nav />
 
- 				<div className="absolute bottom-65 left-1/2 transform -translate-x-1/2 text-white text-2xl font-extrabold">
-    BURN IT ALL
-</div>
+					{/* 🔥 Добавленный текст "BURN IT ALL" */}
+					<div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 text-white text-2xl font-extrabold z-20">
+						BURN IT ALL
+					</div>
 
+					{/* 🔥 Размытие + картинка огня */}
+					<div className="absolute bottom-0 left-0 w-full h-[120px] bg-black bg-opacity-50">
+						<img 
+							src="/whattapcoinmin.png" 
+							alt="Fire Background" 
+							className="w-full h-full object-cover blur-lg opacity-80"
+						/>
+					</div>
 
 					<EnergyBar user={user} />
 				</div>
 
+				{/* 🔥 Радужный градиентный фон */}
 				<div
 					className={cn(
 						"fixed bottom-0 left-0 w-screen h-screen z-0",
