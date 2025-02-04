@@ -57,7 +57,7 @@ const Coin: React.FC<CoinProps> = ({ user }) => {
 
 	return (
 		<button ref={weedRef} disabled={energyRef.current <= 0} className="relative">
-			<CoinBigIcon className="w-[90vw] h-auto" />
+			<CoinBigIcon style={{}} className="w-[90vw] h-auto" />
 		</button>
 	);
 };
