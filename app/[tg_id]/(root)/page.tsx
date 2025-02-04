@@ -37,9 +37,10 @@ export default async function Home({
 				<div className="flex flex-col gap-5 self-stretch mt-auto w-[calc(100vw-32px)] fixed bottom-8 z-10">
 					<Nav />
 
- 				<div className="absolute bottom-54 left-1/2 transform -translate-x-1/2 text-white text-2xl font-extrabold">
-        				BURN IT ALL
-    				</div>
+ 				<div className="absolute bottom-72 left-1/2 transform -translate-x-1/2 text-white text-2xl font-extrabold">
+    BURN IT ALL
+</div>
+
 
 					<EnergyBar user={user} />
 				</div>
