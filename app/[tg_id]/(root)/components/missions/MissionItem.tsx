@@ -1,137 +1,149 @@
 "use client";
 
 import Image from "next/image";
-import { useAtomValue } from "jotai";
-import { User } from "@prisma/client";
+import { useState } from "react";
+import { useSetAtom } from "jotai";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import { Check, ChevronRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { sheetAtom } from "@/lib/atoms";
+import useTelegram from "@/hooks/useTelegram";
+import { checkMember } from "@/lib/bot-actions";
+import { sheetAtom, tokensAtom } from "@/lib/atoms";
+import { completeMission } from "@/lib/server-actions";
 
-import { Sheet, SheetContent } from "@/components/ui/sheet";
+import { Mission } from "@/types";
 
-import MissionItem from "./MissionItem";
+interface MissionItemProps extends Mission {
+	completed?: boolean;
+	referrals: number;
+	tg_id: string;
+}
 
-import { MissionSheet } from "@/types";
+const MissionItem: React.FC<MissionItemProps> = ({
+	id,
+	href,
+	title,
+	reward,
+	imageUrl,
+	completed,
+	friends,
+	referrals,
+	tg_id,
+	channelId,
+	type,
+}) => {
+	const [loading, setLoading] = useState(false);
 
-import { premium_ref_reward } from "@/constants";
+	const setTokens = useSetAtom(tokensAtom);
 
-const Missions = ({
-	user,
-	referralsNumber,
-}: { user: User; referralsNumber: number }) => {
-	const sheet = useAtomValue(sheetAtom);
+	const setSheet = useSetAtom(sheetAtom);
 
-	const mission_sheets: MissionSheet[] = [
-		{
-			missions: [
-				{
-					id: "invitepromo",
-					title: "Invite bonus",
-					reward: `up to ${premium_ref_reward} for friend`,
-					imageUrl: "/handshake.png",
-					href: `/${user.tg_id}/frens`,
-					type: "display",
-				},
-			],
-		},
-		{
-			title: "Specials",
-			missions: [
-				{
-					id: "grouptg",
-					title: "Join our WhaTap TG channel",
-					reward: 50000,
-					imageUrl: "/logowhattap.png",
-					href: "https://t.me/whattapton",
-					channelId: -1002186497513,
-					type: "external",
-				},
-			
-			],
-		},
-		{
-			title: "Bonuses",
-			missions: [
-				{
-					id: "invite5",
-					title: "Invite 5 friends",
-					reward: 50000,
-					imageUrl: "/camping.png",
-					friends: 5,
-					type: "friends",
-				},
-				{
-					id: "invite10",
-					title: "Invite 10 friends",
-					reward: 300000,
-					imageUrl: "/house.png",
-					friends: 10,
-					type: "friends",
-				},
-				{
-					id: "invite100",
-					title: "Invite 100 friends",
-					reward: 1000000,
-					imageUrl: "/houses.png",
-					friends: 100,
-					type: "friends",
-				},
-			],
-		},
-	];
+	const telegram = useTelegram();
+
+	const router = useRouter();
+
+	const onClick = async () => {
+		try {
+			setLoading(true);
+
+			if (type === "telegram") {
+				const m = await checkMember({
+					tg_id: Number(tg_id),
+					channelId: channelId!,
+				});
+
+				if (!m) {
+					toast.error("Task not completed", { icon: "ℹ️" });
+
+					telegram?.openTelegramLink(href!);
+				} else {
+					await completeMission({
+						tg_id,
+						increment: Number(reward),
+						missionId: id,
+					});
+				}
+			}
+
+			if (type === "friends") {
+				if (referrals >= friends!) {
+					await completeMission({
+						tg_id,
+						increment: Number(reward),
+						missionId: id,
+					});
+
+					setTokens((prev) => prev + Number(reward));
+
+					toast.success("Task completed");
+				} else {
+					toast.error("Task not completed", { icon: "ℹ️" });
+				}
+			}
+
+			if (type === "display") {
+				setSheet("friends");
+			}
+
+			if (type === "external") {
+				telegram?.openLink(href!);
+
+				await completeMission({
+					tg_id,
+					increment: Number(reward),
+					missionId: id,
+				});
+
+				setTokens((prev) => prev + Number(reward));
+
+				toast.success("Task completed");
+			}
+
+			router.refresh();
+		} catch (error) {
+			console.log(error);
+
+			toast.error("Error");
+		} finally {
+			setLoading(false);
+		}
+	};
 
 	return (
-		<Sheet open={sheet === "missions"}>
-			<SheetContent side="right" onOpenAutoFocus={(e) => e.preventDefault()}>
-				<main className="w-screen h-screen flex flex-col gap-[30px] px-4 py-10 relative overflow-y-auto">
-					<div className="flex flex-col items-center mx-auto gap-[18px]">
-						<Image
-							src="/money.png"
-							alt="money-bag"
-							width={160}
-							height={160}
-							className="w-[72px] h-[72px]"
-						/>
+		<button
+			onClick={onClick}
+			disabled={completed || loading}
+			className={cn("flex items-center gap-3", completed && "opacity-50")}
+		>
+			<div className="p-4 rounded-full bg-white/5">
+				<Image
+					src={imageUrl}
+					alt="task-image"
+					width={160}
+					height={160}
+					className="w-8 h-8"
+				/>
+			</div>
 
-						<h1 className="text-[30px] text-center font-bold">
-							Earn more coins
-						</h1>
-					</div>
+			<div className="flex flex-col items-start gap-[5px]">
+				<p className="text-[15px] text-left font-bold leading-tight">{title}</p>
 
-					<div className="flex flex-col gap-[25px] relative z-10">
-						{mission_sheets.map((sheet, index) => (
-							<div key={index} className="flex flex-col gap-3.5 self-stretch">
-								{sheet.title && (
-									<h2 className="text-[21px] font-bold">{sheet.title}</h2>
-								)}
+				<p className="text-xs leading-none font-bold">
+					{typeof reward === "number"
+						? `+${reward.toLocaleString("en-US").replaceAll(",", " ")}`
+						: reward}
+				</p>
+			</div>
 
-								<div className="flex flex-col bg-white/10 rounded-2xl p-4 gap-4">
-									{sheet.missions.map((mission) => (
-										<MissionItem
-											key={mission.id}
-											tg_id={user.tg_id}
-											completed={user?.completedMissionsIDs.includes(
-												mission.id,
-											)}
-											referrals={referralsNumber}
-											{...mission}
-										/>
-									))}
-								</div>
-							</div>
-						))}
-					</div>
-
-					<div
-						className={cn(
-							"opacity-50 fixed bottom-0 left-0 w-screen h-[90vh]",
-							"[background:radial-gradient(ellipse_100%_90%_at_bottom,var(--app-color),transparent_100%)]",
-						)}
-					/>
-				</main>
-			</SheetContent>
-		</Sheet>
+			{completed ? (
+				<Check className="w-5 h-5 text-white/70 ml-auto" />
+			) : (
+				<ChevronRight className="w-5 h-5 text-white/70 ml-auto" />
+			)}
+		</button>
 	);
 };
 
-export default Missions;
+export default MissionItem;
