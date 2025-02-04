@@ -44,16 +44,18 @@ const LastExitProvider: React.FC<LastExitProviderProps> = ({ user }) => {
 	}, []);
 
 	useEffect(() => {
-    	const energyPool = battery_levels[user.batteryLvl as Level].value;
-    	const energyPerSecond = charger_levels[user.chargerLvl as Level].value;
+		const energyPerSecond = charger_levels[user.chargerLvl as Level].value;
+		const energyPool = battery_levels[user.batteryLvl as Level].value;
 
-    	const interval = setInterval(() => {
-        setEnergy((prev) => Math.min(prev + energyPerSecond, energyPool));
-    }, 1000); // Энергия прибавляется каждую секунду
+		const interval = setInterval(() => {
+			setEnergy((prev) => Math.min(prev + energyPerSecond, energyPool));
+		}, 1000 / energyPerSecond);
 
-    		return () => clearInterval(interval); // Очищаем таймер при выходе
-}, []);
+		return () => clearInterval(interval);
+	}, [user.chargerLvl, user.batteryLvl]);
 
+	// 🔥 Добавляем return null, чтобы React не ругался
+	return null;
 };
 
 export default LastExitProvider;
