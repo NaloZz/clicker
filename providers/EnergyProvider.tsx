@@ -32,27 +32,32 @@ const LastExitProvider: React.FC<LastExitProviderProps> = ({ user }) => {
 	}, []);
 
 	useEffect(() => {
-		const interval = setInterval(fillEnergy, 1000);
+    const energyPerSecond = charger_levels[user.chargerLvl as Level].value; // Скорость восстановления
+    const energyPool = battery_levels[user.batteryLvl as Level].value; // Макс. запас энергии
 
-		window.addEventListener("unload", () => setLastExit(Date.now()));
+    // 1️⃣ Восстановление энергии за оффлайн-время
+    if (lastExit) {
+        const secondsOffline = (Date.now() - Number(lastExit)) / 1000;
+        const energyToRecover = Math.floor(secondsOffline * energyPerSecond);
+        setEnergy((prev) => Math.min(prev + energyToRecover, energyPool));
+    }
 
-		return () => {
-			clearInterval(interval);
+    // 2️⃣ Обычное накопление энергии в онлайне (не даём запуститься нескольким таймерам!)
+    let interval: NodeJS.Timeout | null = null;
+    if (!interval) {
+        interval = setInterval(() => {
+            setEnergy((prev) => Math.min(prev + energyPerSecond, energyPool));
+        }, 1000);
+    }
 
-			window.removeEventListener("unload", () => setLastExit(Date.now()));
-		};
-	}, []);
-
-	useEffect(() => {
-		const energyPerSecond = charger_levels[user.chargerLvl as Level].value;
-		const energyPool = battery_levels[user.batteryLvl as Level].value;
-
-		const interval = setInterval(() => {
-			setEnergy((prev) => Math.min(prev + energyPerSecond, energyPool));
-		}, 1000 / energyPerSecond);
-
-		return () => clearInterval(interval);
-	}, [user.chargerLvl, user.batteryLvl]);
+    return () => {
+        if (interval) {
+            clearInterval(interval);
+            interval = null; // ✅ Очищаем, чтобы не было дублирования
+        }
+        setLastExit(Date.now()); // Сохраняем время выхода
+    };
+}, [user.chargerLvl, user.batteryLvl]); // Перезапускать эффект только при изменении апгрейдов
 
 	// 🔥 Добавляем return null, чтобы React не ругался
 	return null;
