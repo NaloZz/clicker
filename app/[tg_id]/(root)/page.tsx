@@ -38,26 +38,19 @@ export default async function Home({
           <Nav />
 
           {/* 🔥 Текст "BURN IT ALL" */}
-          <div className="absolute bottom-36 left-1/2 transform -translate-x-1/2 text-white text-2xl font-extrabold z-20">
+          <div className="absolute bottom-30 left-1/2 transform -translate-x-1/2 text-white text-2xl font-extrabold z-20">
             BURN IT ALL
           </div>
 
           {/* 🔥 Размытие + картинка огня */}
-          <div className="absolute bottom-0 left-0 w-full z-10">
+          <div className="absolute bottom-0 left-0 w-full h-full bg-opacity-50">
             <img 
               src="/whattapcoinmin.gif" 
               alt="Fire Background" 
-              className="w-full object-cover blur-lg opacity-80"
+              className="w-full h-full object-cover blur-lg opacity-80"
             />
           </div>
 
-          {/* 🔥 Радужный градиентный фон */}
-          <div
-            className={cn(
-              "fixed bottom-0 left-0 w-screen z-0", // убрали ограничение по высоте
-              "[background:radial-gradient(ellipse_100%_80%_at_bottom,var(--app-color),transparent_100%)]"
-            )}
-          />
         </div>
       </main>
     );
