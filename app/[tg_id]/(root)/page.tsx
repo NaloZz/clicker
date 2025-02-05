@@ -43,13 +43,14 @@ export default async function Home({
 </div>
 
 					{/* 🔥 Размытие + картинка огня */}
-					<div className="absolute bottom-0 left-0 w-full h-[120px] bg-opacity-50">
-						<img 
-							src="/whattapcoinmin.gif" 
-							alt="Fire Background" 
-							className="w-full h-full object-cover blur-lg opacity-80"
-						/>
-					</div>
+					<div className="absolute bottom-0 left-0 w-full h-[180px] flex justify-center">
+	<img 
+		src="/whattapcoinmin.gif" 
+		alt="Fire Background" 
+		className="h-full object-contain opacity-80"
+	/>
+</div>
+
 
 					<EnergyBar user={user} />
 				</div>
