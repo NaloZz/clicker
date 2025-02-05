@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+/* Или можно использовать Exo 2 */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@700&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,7 +20,8 @@
 
     @apply p-0 m-0 min-w-0
   }
-  html, :root, body {
-    @apply text-white bg-black font-sans
-  }
+ html, :root, body {
+    @apply text-white bg-black;
+    font-family: 'Montserrat', sans-serif; /* Или 'Exo 2' */
+}
 }
