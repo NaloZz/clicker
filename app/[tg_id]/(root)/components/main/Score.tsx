@@ -47,7 +47,7 @@ const Score = ({ user }: { user: User }) => {
 
 			<p
 				suppressHydrationWarning
-				className="text-[52px] font-bold leading-none"
+				className="text-[52px] font-extrabold leading-none font-[Montserrat]"
 			>
 				{formattedCount.map((text, index) => (
 					<Fragment key={index}>
