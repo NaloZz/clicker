@@ -30,28 +30,24 @@ export default async function Home({
 
 				<div className="flex flex-col gap-8 items-center w-full relative z-10 mt-8">
 					<Score user={user} />
-
 					<Coin user={user} />
+				</div>
+
+				{/* 🔥 Контейнер для фоновой гифки */}
+				<div className="fixed bottom-0 left-0 w-full h-[250px] z-0 pointer-events-none">
+					<div 
+						className="w-full h-full bg-cover bg-bottom opacity-80" 
+						style={{ backgroundImage: "url('/whattapcoinmin.gif')" }}
+					/>
 				</div>
 
 				<div className="flex flex-col gap-5 self-stretch mt-auto w-[calc(100vw-32px)] fixed bottom-8 z-10">
 					<Nav />
 
 					{/* 🔥 Текст "BURN IT ALL" (поднял выше) */}
-<div className="absolute bottom-30 left-1/2 transform -translate-x-1/2 text-white text-2xl font-extrabold z-20">
-    BURN IT ALL
-</div>
-
-					{/* 🔥 Размытие + картинка огня */}
-<div className="fixed bottom-0 left-0 w-full h-[200px] z-0 flex justify-center pointer-events-none">
-    <img 
-        src="/whattapcoinmin.gif" 
-        alt="Fire Background" 
-        className="h-full w-auto object-contain opacity-80"
-    />
-</div>
-
-
+					<div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 text-white text-2xl font-extrabold z-20">
+						BURN IT ALL
+					</div>
 
 					<EnergyBar user={user} />
 				</div>
@@ -65,9 +61,7 @@ export default async function Home({
 				/>
 
 				<Shop user={user} />
-
 				<Friends tg_id={tg_id} friends={user.referrals} />
-
 				<Missions user={user} referralsNumber={user.referrals.length} />
 			</main>
 		);
