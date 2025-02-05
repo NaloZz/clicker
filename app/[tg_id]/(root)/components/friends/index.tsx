@@ -30,7 +30,7 @@ const Friends = ({ tg_id, friends }: { tg_id: string; friends: User[] }) => {
 			<SheetContent side="right" onOpenAutoFocus={(e) => e.preventDefault()}>
 				<main className="w-screen h-screen flex flex-col gap-10 px-4 pt-10 pb-24 relative overflow-y-auto">
 					{/* Добавлен блок с картинкой рук над заголовком */}
-					<div className="flex flex-col items-center mx-auto gap-[18px]">
+					<div className="flex flex-col items-center mx-auto gap-[18px] mb-3">
 						<Image
 							src="/handshake.png" // Убедись, что картинка "hands" доступна в нужной папке
 							alt="handshake"
@@ -39,7 +39,7 @@ const Friends = ({ tg_id, friends }: { tg_id: string; friends: User[] }) => {
 							className="w-[72px] h-[72px]"
 						/>
 
-						<h1 className="text-4xl text-center font-bold tracking-tight self-stretch mb-2">
+						<h1 className="text-4xl text-center font-bold tracking-tight self-stretch">
 							{/* Уменьшили отступ под заголовком */}
 							{!empty && <span>{friends.length}&nbsp;</span>}
 							Friends
@@ -61,10 +61,10 @@ const Friends = ({ tg_id, friends }: { tg_id: string; friends: User[] }) => {
 										<p
 											className="text-sm leading-[15px]"
 											style={{
-												color: "var(--app-color)", // Применяем основной цвет для текста
+												color: "var(--app-color)", // Применяем основной цвет для награды
 											}}
 										>
-											<span className="text-money font-medium">
+											<span className="text-white font-medium">
 												{non_premium_ref_reward.toLocaleString("en-US")}
 											</span>
 											&nbsp;for you and your friend
@@ -91,10 +91,10 @@ const Friends = ({ tg_id, friends }: { tg_id: string; friends: User[] }) => {
 										<p
 											className="text-sm leading-[15px]"
 											style={{
-												color: "var(--app-color)", // Применяем основной цвет для текста
+												color: "var(--app-color)", // Применяем основной цвет для награды
 											}}
 										>
-											<span className="text-money font-medium">
+											<span className="text-white font-medium">
 												{premium_ref_reward.toLocaleString("en-US")}
 											</span>
 											&nbsp;for you and your friend
@@ -114,10 +114,11 @@ const Friends = ({ tg_id, friends }: { tg_id: string; friends: User[] }) => {
 						<div
 							className={cn(
 								"flex flex-col items-center justify-center p-4 gap-6 bg-white/10 rounded-2xl backdrop-blur-3xl [-webkit-backdrop-filter:blur(64px)] self-stretch",
-								empty && "min-h-64",
+								empty && "min-h-48", // Уменьшили минимальный размер блока, если друзья отсутствуют
 							)}
 						>
-							{empty && <p className="text-white/30 text-sm">No friends yet</p>}
+							{/* Уменьшили блок с текстом "No friends yet" */}
+							{empty && <p className="text-white/50 text-sm">No friends yet</p>}
 
 							{friends.map((friend) => (
 								<Friend key={friend.id} {...friend} />
