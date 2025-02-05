@@ -22,34 +22,33 @@ const Missions = ({
 	const sheet = useAtomValue(sheetAtom);
 
 	const mission_sheets: MissionSheet[] = [
-		{
-			missions: [
-				{
-					id: "invitepromo",
-					title: "Invite bonus",
-					reward: `up to ${premium_ref_reward} for friend`,
-					imageUrl: "/handshake.png",
-					href: `/${user.tg_id}/frens`,
-					type: "display",
-				},
-			],
-		},
-		{
-			title: "Specials",
-			missions: [
-				{
-					id: "grouptg",
-					title: "Join our ULT100x TG channel",
-					reward: 50000,
-					imageUrl: "/logowhattap.png",
-					href: "https://t.me/ult100x",
-					type: "external",
-				},
-							],
-		},
-					],
-		},
-	];
+	{
+		missions: [
+			{
+				id: "invitepromo",
+				title: "Invite bonus",
+				reward: `up to ${premium_ref_reward} for friend`,
+				imageUrl: "/handshake.png",
+				href: `/${user.tg_id}/frens`,
+				type: "display",
+			},
+		],
+	},
+	{
+		title: "Specials",
+		missions: [
+			{
+				id: "grouptg",
+				title: "Join our ULT100x TG channel",
+				reward: 50000,
+				imageUrl: "/logowhattap.png",
+				href: "https://t.me/ult100x",
+				type: "external",
+			},
+		],
+	},
+]; // ✅ Лишние `]` и `}` убраны
+
 
 	return (
 		<Sheet open={sheet === "missions"}>
