@@ -1,122 +1,154 @@
 import Image from "next/image";
 import { ChevronRight } from "lucide-react";
+import { useState } from "react";
 
 import {
-	Sheet,
-	SheetClose,
-	SheetContent,
-	SheetTrigger,
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import CoinIcon from "@/components/icons/CoinIcon";
 
 interface BoostItemProps {
-	onSubmit: () => void;
-	imageUrl: string;
-	title: string;
-	description: string;
-	increase: string;
-	currentLvl: number;
-	price: number;
-	max: boolean;
-	available: boolean;
+  onSubmit: () => void;
+  imageUrl: string;
+  title: string;
+  description: string;
+  increase: string;
+  currentLvl: number;
+  price: number;
+  max: boolean;
+  available: boolean;
 }
 
 const BoostItem: React.FC<BoostItemProps> = ({
-	onSubmit,
-	imageUrl,
-	title,
-	description,
-	increase,
-	currentLvl,
-	price,
-	max,
-	available,
+  onSubmit,
+  imageUrl,
+  title,
+  description,
+  increase,
+  currentLvl,
+  price,
+  max,
+  available,
 }) => {
-	return (
-		<Sheet>
-			<SheetTrigger asChild>
-				<button
-					disabled={max || !available}
-					className="flex items-center gap-3 w-full"
-				>
-					<div className="bg-white/5 rounded-lg p-4">
-						<Image
-							src={imageUrl}
-							alt="boost-image"
-							width={160}
-							height={160}
-							className="w-8 h-8"
-						/>
-					</div>
+  // Добавляем состояния для контроля частоты покупки
+  const [canBuy, setCanBuy] = useState(true);
+  const [remainingTime, setRemainingTime] = useState(0);
 
-					<div className="flex flex-col items-start">
-						<p>{title}</p>
+  const handlePurchase = async () => {
+    if (!canBuy) {
+      alert(`Подождите ${remainingTime} секунд до следующей покупки.`);
+      return;
+    }
 
-						{max ? (
-							<span className="text-sm text-white/30">Max lvl</span>
-						) : (
-							<div className="flex items-center gap-2">
-								<div className="flex items-center gap-1">
-									{available ? (
-										<CoinIcon className="w-4 h-4" />
-									) : (
-										<Image
-											src="/locked.png"
-											alt="locked"
-											width={160}
-											height={160}
-											className="w-4 h-4"
-										/>
-									)}
-									<span className="text-sm font-semibold">{price}</span>
-								</div>
+    // Логика покупки
+    try {
+      // Имитируем успешную покупку
+      await onSubmit();
 
-								<div className="w-[3px] h-[3px] rounded-full bg-white/30" />
+      // Ограничиваем частоту покупок (например, 5 секунд)
+      setCanBuy(false);
 
-								<span className="text-sm text-white/30">{`${currentLvl} lvl`}</span>
-							</div>
-						)}
-					</div>
+      // Устанавливаем время ожидания
+      setRemainingTime(5); // Например, 5 секунд
 
-					<ChevronRight className="ml-auto text-white/30" />
-				</button>
-			</SheetTrigger>
-			<SheetContent side="bottom">
-				<div className="flex flex-col items-center pt-[34px]">
-					<Image
-						src={imageUrl}
-						alt="boost-image"
-						width={160}
-						height={160}
-						className="w-[72px] h-[72px]"
-					/>
+      // Через 5 секунд разрешаем следующую покупку
+      setTimeout(() => {
+        setCanBuy(true);
+        setRemainingTime(0); // Обнуляем время ожидания
+      }, 5000);
+    } catch (error) {
+      console.error("Ошибка при совершении покупки:", error);
+    }
+  };
 
-					<h1 className="text-[26px] font-bold mt-5">{title}</h1>
+  return (
+    <Sheet>
+      <SheetTrigger asChild>
+        <button
+          disabled={max || !available}
+          className="flex items-center gap-3 w-full"
+        >
+          <div className="bg-white/5 rounded-lg p-4">
+            <Image
+              src={imageUrl}
+              alt="boost-image"
+              width={160}
+              height={160}
+              className="w-8 h-8"
+            />
+          </div>
 
-					<p className="text-sm text-center mt-2.5 max-w-[220px]">
-						{description}
-					</p>
+          <div className="flex flex-col items-start">
+            <p>{title}</p>
 
-					<p className="text-sm mt-6">{`+${increase} for each level`}</p>
+            {max ? (
+              <span className="text-sm text-white/30">Max lvl</span>
+            ) : (
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1">
+                  {available ? (
+                    <CoinIcon className="w-4 h-4" />
+                  ) : (
+                    <Image
+                      src="/locked.png"
+                      alt="locked"
+                      width={160}
+                      height={160}
+                      className="w-4 h-4"
+                    />
+                  )}
+                  <span className="text-sm font-semibold">{price}</span>
+                </div>
 
-					<div className="flex items-center gap-2 mt-4">
-    					     <CoinIcon className="w-auto h-12"/>
-     					     <p className="text-2xl font-medium">{price}</p>
-					</div>
+                <div className="w-[3px] h-[3px] rounded-full bg-white/30" />
 
-					<SheetClose asChild>
-						<Button
-							onClick={onSubmit}
-							className="mt-8 self-stretch bg-gradient-to-r from-transparent to-appcolor"
-						>
-							Get
-						</Button>
-					</SheetClose>
-				</div>
-			</SheetContent>
-		</Sheet>
-	);
+                <span className="text-sm text-white/30">{`${currentLvl} lvl`}</span>
+              </div>
+            )}
+          </div>
+
+          <ChevronRight className="ml-auto text-white/30" />
+        </button>
+      </SheetTrigger>
+      <SheetContent side="bottom">
+        <div className="flex flex-col items-center pt-[34px]">
+          <Image
+            src={imageUrl}
+            alt="boost-image"
+            width={160}
+            height={160}
+            className="w-[72px] h-[72px]"
+          />
+
+          <h1 className="text-[26px] font-bold mt-5">{title}</h1>
+
+          <p className="text-sm text-center mt-2.5 max-w-[220px]">
+            {description}
+          </p>
+
+          <p className="text-sm mt-6">{`+${increase} for each level`}</p>
+
+          <div className="flex items-center gap-2 mt-4">
+            <CoinIcon className="w-auto h-12" />
+            <p className="text-2xl font-medium">{price}</p>
+          </div>
+
+          <SheetClose asChild>
+            <Button
+              onClick={handlePurchase}
+              className="mt-8 self-stretch bg-gradient-to-r from-transparent to-appcolor"
+            >
+              Get
+            </Button>
+          </SheetClose>
+        </div>
+      </SheetContent>
+    </Sheet>
+  );
 };
 
 export default BoostItem;
