@@ -17,24 +17,12 @@
 
     --app-color: #FF8000;
 
-    @apply p-0 m-0 min-w-0;
+    @apply p-0 m-0 min-w-0
   }
-
-  html, :root, body {
+ html, :root, body {
     @apply text-white bg-black;
     font-family: 'Montserrat', sans-serif; /* Или 'Exo 2' */
     font-weight: 800; /* extrabold */
     line-height: 1; /* leading-none */
-    
-    height: 100%;
-    width: 100%;
-    overflow-x: hidden; /* Отключаем горизонтальную прокрутку */
-    
-    /* Фоновое изображение */
-    background-image: url('/whattapcoinmin.gif'); /* Путь к вашему фоновому изображению */
-    background-size: cover; /* Покрыть весь экран */
-    background-position: center; /* Центрируем картинку */
-    background-attachment: fixed; /* Закрепляем картинку на фоне */
-    background-repeat: no-repeat; /* Не повторяем картинку */
-  }
+}
 }
