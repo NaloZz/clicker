@@ -8,10 +8,10 @@ import Shop from "./components/shop";
 import Nav from "./components/main/Nav";
 import Clan from "./components/main/Clan";
 import Coin from "./components/main/Coin";
-import Friends from "@/components/friends";
-import Score from "@/components/main/Score";
-import Missions from "@/components/missions";
-import EnergyBar from "@/components/main/EnergyBar";
+import Friends from "./components/friends";
+import Score from "./components/main/Score";
+import Missions from "./components/missions";
+import EnergyBar from "./components/main/EnergyBar";
 
 export default async function Home({
   params: { tg_id },
