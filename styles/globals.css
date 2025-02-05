@@ -22,8 +22,6 @@
   }
  html, :root, body {
     @apply text-white bg-black;
-    font-family: 'Montserrat', sans-serif; /* Или 'Exo 2' */
+    font-family: 'Montserrat', sans-serif; font-extrabold; leading-none; /* Или 'Exo 2' */
 }
 }
-
- 
