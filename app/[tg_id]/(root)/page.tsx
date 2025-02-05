@@ -38,7 +38,7 @@ export default async function Home({
 					<Nav />
 
 					{/* 🔥 Текст "BURN IT ALL" (поднял выше) */}
-<div className="absolute bottom-24 left-1/2 transform -translate-x-1/2 text-white text-2xl font-extrabold z-20">
+<div className="absolute bottom-30 left-1/2 transform -translate-x-1/2 text-white text-2xl font-extrabold z-20">
     BURN IT ALL
 </div>
 
