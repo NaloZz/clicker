@@ -64,11 +64,11 @@ const ClansPage = async ({
 	return (
 		<main className="min-h-screen flex flex-col p-4 pt-10 relative">
 			<div className="flex flex-col items-center mx-auto relative z-10">
-				<h1 className="text-[30px] leading-none font-bold">Connect wallet</h1>
+				<h1 className="text-[30px] leading-none font-bold">Join Clan!</h1>
 
-				<p className="text-center mt-[25px]">Soon you will be able to connect your wallet</p>
+				<p className="text-center mt-[25px]">These clans recruiting now.</p>
 
-				<p>Wait a little while.</p>
+				<p>Do you wanna join?</p>
 			</div>
 
 			<CreateClanButton />
