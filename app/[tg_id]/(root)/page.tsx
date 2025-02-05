@@ -43,17 +43,22 @@ export default async function Home({
           </div>
 
           {/* 🔥 Размытие + картинка огня */}
-          <div className="relative w-full h-[400px] overflow-hidden">
-            <div className="absolute inset-0 z-0">
-              <img 
-                src="/whattapcoinmin.gif" 
-                alt="Fire Background" 
-                className="w-full h-full object-cover object-bottom opacity-80 blur-lg"
-              />
-            </div>
-          </div>
-
           <EnergyBar user={user} />
+        </div>
+
+        <Shop user={user} />
+
+        <Friends tg_id={tg_id} friends={user.referrals} />
+
+        <Missions user={user} referralsNumber={user.referrals.length} />
+
+        {/* 🔥 Размещение GIF-фона внизу всего */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/whattapcoinmin.gif"
+            alt="Fire Background"
+            className="w-full h-full object-cover object-bottom opacity-80 blur-lg"
+          />
         </div>
 
         {/* 🔥 Радужный градиентный фон */}
@@ -63,12 +68,6 @@ export default async function Home({
             "[background:radial-gradient(ellipse_100%_80%_at_bottom,var(--app-color),transparent_100%)]",
           )}
         />
-
-        <Shop user={user} />
-
-        <Friends tg_id={tg_id} friends={user.referrals} />
-
-        <Missions user={user} referralsNumber={user.referrals.length} />
       </main>
     );
   } catch (error) {
