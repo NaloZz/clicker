@@ -45,7 +45,7 @@ export default async function Home({
 					{/* 🔥 Размытие + картинка огня */}
 					<div className="absolute bottom-0 left-0 w-full h-[120px] bg-opacity-50">
 						<img 
-							src="/whattapcoinmin.png" 
+							src="/whattapcoinmin.gif" 
 							alt="Fire Background" 
 							className="w-full h-full object-cover blur-lg opacity-80"
 						/>
