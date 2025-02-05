@@ -30,7 +30,7 @@ export default async function Home({
 				<img
 					src="https://raw.githubusercontent.com/NaloZz/clicker/refs/heads/main/public/whattapcoinmin.gif" // Замените на свой URL
 					alt="Background GIF"
-					className="absolute top-0 left-0 w-full h-full object-cover blur-sm opacity-50"
+					className="absolute top-0 left-0 w-[70%] h-[70%] object-contain blur-lg opacity-40"
 				/>
 
 				{/* Основной контент страницы */}
