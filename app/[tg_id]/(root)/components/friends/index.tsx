@@ -28,11 +28,11 @@ const Friends = ({ tg_id, friends }: { tg_id: string; friends: User[] }) => {
 	return (
 		<Sheet open={sheet === "friends"}>
 			<SheetContent side="right" onOpenAutoFocus={(e) => e.preventDefault()}>
-				<main className="w-screen h-screen flex flex-col gap-10 px-4 pt-10 pb-24 relative overflow-y-auto">
-					{/* Добавлен блок с картинкой рук над заголовком */}
-					<div className="flex flex-col items-center mx-auto gap-[18px] mb-3">
+				<main className="w-screen h-screen flex flex-col gap-6 px-4 pt-6 pb-24 relative overflow-y-auto">
+					{/* Добавлен блок с картинкой рук над заголовком, уменьшен отступ */}
+					<div className="flex flex-col items-center mx-auto gap-[10px] mb-2">
 						<Image
-							src="/handshake.png" // Убедись, что картинка "hands" доступна в нужной папке
+							src="/handshake.png"
 							alt="handshake"
 							width={160}
 							height={160}
@@ -40,13 +40,13 @@ const Friends = ({ tg_id, friends }: { tg_id: string; friends: User[] }) => {
 						/>
 
 						<h1 className="text-4xl text-center font-bold tracking-tight self-stretch">
-							{/* Уменьшили отступ под заголовком */}
+							{/* Уменьшены отступы под заголовком */}
 							{!empty && <span>{friends.length}&nbsp;</span>}
 							Friends
 						</h1>
 					</div>
 
-					{/* Удален блок с "Invite friends to get bonuses" */}
+					{/* Удален блок с "Invite friends to get bonuses", теперь просто пустой контейнер */}
 					<div className="flex flex-col gap-3 relative z-10">
 						<div className="flex flex-col items-center justify-center p-4 gap-6 bg-white/10 rounded-2xl self-stretch">
 							<div className="flex items-start gap-3.5 self-stretch">
@@ -105,8 +105,9 @@ const Friends = ({ tg_id, friends }: { tg_id: string; friends: User[] }) => {
 						</div>
 					</div>
 
-					<div className="flex flex-col gap-3 relative z-10">
-						<h2 className="text-2xl font-semibold tracking-tight mb-3">
+					{/* Уменьшены отступы для Friends List */}
+					<div className="flex flex-col gap-3 relative z-10 mt-2">
+						<h2 className="text-2xl font-semibold tracking-tight mb-2">
 							{/* Уменьшили отступ перед списком друзей */}
 							Friends List
 						</h2>
@@ -114,7 +115,7 @@ const Friends = ({ tg_id, friends }: { tg_id: string; friends: User[] }) => {
 						<div
 							className={cn(
 								"flex flex-col items-center justify-center p-4 gap-6 bg-white/10 rounded-2xl backdrop-blur-3xl [-webkit-backdrop-filter:blur(64px)] self-stretch",
-								empty && "min-h-48", // Уменьшили минимальный размер блока, если друзья отсутствуют
+								empty && "min-h-32", // Уменьшили минимальный размер блока, если друзья отсутствуют
 							)}
 						>
 							{/* Уменьшили блок с текстом "No friends yet" */}
