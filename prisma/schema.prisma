@@ -10,6 +10,7 @@ datasource db {
 model User {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   tokens      Int      @default(0)
+  energy      Int      @default(1500)
   tg_id       String   @unique
   tg_username String
   tg_premium  Boolean  @default(false)
@@ -19,9 +20,6 @@ model User {
   inviterId   String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  batteryLvl  Int      @default(0)
-  chargerLvl  Int      @default(0)
-  multitapLvl Int      @default(0)
 
   inviter   User?  @relation(name: "UserToReferrals", fields: [inviterId], references: [tg_id], onDelete: NoAction, onUpdate: NoAction)
   referrals User[] @relation(name: "UserToReferrals")
