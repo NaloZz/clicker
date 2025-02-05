@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import prismadb from "@/lib/prismadb";
 import { getClan } from "@/lib/server-actions";
 
-import CreateButton from "@/components/ui/CreateButton";
+import CreateButton from "@/components/ui/CreateButton";  // Используйте правильный путь в зависимости от настроек проекта
 
 import Shop from "./components/shop";
 import Nav from "./components/main/Nav";
@@ -29,40 +29,37 @@ export default async function Home({
         <Clan tg_id={tg_id} clan={clan} clanId={user.clanId} />
 
         <div className="flex flex-col gap-8 items-center w-full relative z-10 mt-8">
-          {/* Компонент с очками */}
           <Score user={user} />
 
-          {/* Компонент с монетами */}
           <Coin user={user} />
-
-          {/* Энергия */}
-          <EnergyBar user={user} />
         </div>
 
-        {/* Компонент друзей */}
-        <Friends user={user} />
-
-        {/* Компонент миссий */}
-        <Missions user={user} />
-
-        {/* Нижняя панель с кнопками */}
         <div className="flex flex-col gap-5 self-stretch mt-auto w-[calc(100vw-32px)] fixed bottom-8 z-10">
           <Nav />
-        </div>
 
-        {/* 🔥 Размытие + картинка огня — теперь находится в самом низу */}
-        <div className="absolute bottom-0 left-0 w-full h-full bg-opacity-50">
-          <img 
-            src="/whattapcoinmin.gif" 
-            alt="Fire Background" 
-            className="w-full h-full object-cover blur-lg opacity-80"
+          {/* 🔥 Текст "BURN IT ALL" */}
+          <div className="absolute bottom-30 left-1/2 transform -translate-x-1/2 text-white text-2xl font-extrabold z-20">
+            BURN IT ALL
+          </div>
+
+          {/* 🔥 Размытие + картинка огня */}
+          <div className="absolute bottom-0 left-0 w-full h-full bg-opacity-50">
+            <img 
+              src="/whattapcoinmin.gif" 
+              alt="Fire Background" 
+              className="w-full h-full object-cover blur-lg opacity-80"
+            />
+          </div>
+
+          {/* 🔥 Радужный градиентный фон убран, оставлена только гифка с огнем */}
+          <div
+            className={cn(
+              "fixed bottom-0 left-0 w-screen h-screen z-0"
+            )}
           />
-        </div>
 
-        {/* 🔥 Текст "BURN IT ALL" внизу */}
-        <div className="absolute bottom-30 left-1/2 transform -translate-x-1/2 text-white text-2xl font-extrabold z-20">
-          BURN IT ALL
-        </div>
+        </div> {/* конец блока с основным контентом */}
+
       </main>
     );
   } catch (error) {
