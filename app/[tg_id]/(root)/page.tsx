@@ -43,7 +43,7 @@ export default async function Home({
           </div>
 
           {/* 🔥 Размытие + картинка огня */}
-          <div className="relative w-full h-[120px] overflow-hidden">
+          <div className="relative w-full h-[400px] overflow-hidden">
             <div className="absolute inset-0 z-0">
               <img 
                 src="/whattapcoinmin.gif" 
