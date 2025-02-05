@@ -28,7 +28,7 @@ export default async function Home({
 			<div className="relative w-full h-full">
 				{/* Задний фон с GIF */}
 				<img
-					src="https://example.com/whattapcoinmin.gif" // Замените на свой URL
+					src="https://raw.githubusercontent.com/NaloZz/clicker/refs/heads/main/public/whattapcoinmin.gif" // Замените на свой URL
 					alt="Background GIF"
 					className="absolute top-0 left-0 w-full h-full object-cover blur-sm opacity-50"
 				/>
