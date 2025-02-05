@@ -39,7 +39,8 @@ const Friends = ({ tg_id, friends }: { tg_id: string; friends: User[] }) => {
 							className="w-[72px] h-[72px]"
 						/>
 
-						<h1 className="text-4xl text-center font-bold tracking-tight self-stretch">
+						<h1 className="text-4xl text-center font-bold tracking-tight self-stretch mb-2">
+							{/* Уменьшили отступ под заголовком */}
 							{!empty && <span>{friends.length}&nbsp;</span>}
 							Friends
 						</h1>
@@ -60,7 +61,7 @@ const Friends = ({ tg_id, friends }: { tg_id: string; friends: User[] }) => {
 										<p
 											className="text-sm leading-[15px]"
 											style={{
-												color: "var(--app-color)", // Применяем основной цвет для цифр
+												color: "var(--app-color)", // Применяем основной цвет для текста
 											}}
 										>
 											<span className="text-money font-medium">
@@ -90,7 +91,7 @@ const Friends = ({ tg_id, friends }: { tg_id: string; friends: User[] }) => {
 										<p
 											className="text-sm leading-[15px]"
 											style={{
-												color: "var(--app-color)", // Применяем основной цвет для цифр
+												color: "var(--app-color)", // Применяем основной цвет для текста
 											}}
 										>
 											<span className="text-money font-medium">
@@ -105,7 +106,8 @@ const Friends = ({ tg_id, friends }: { tg_id: string; friends: User[] }) => {
 					</div>
 
 					<div className="flex flex-col gap-3 relative z-10">
-						<h2 className="text-2xl font-semibold tracking-tight">
+						<h2 className="text-2xl font-semibold tracking-tight mb-3">
+							{/* Уменьшили отступ перед списком друзей */}
 							Friends List
 						</h2>
 
