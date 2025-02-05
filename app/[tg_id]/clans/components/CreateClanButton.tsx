@@ -37,7 +37,7 @@ const CreateClanButton = () => {
  return (
   <Sheet>
    <SheetTrigger asChild>
-    <Button className="bg-gradient-to-r from-transparent to-appcolor self-stretch mt-[33px] relative z-10">
+    <Button className="bg-grey self-stretch mt-[33px] relative z-10">
      Soon
     </Button>
    </SheetTrigger>
