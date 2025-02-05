@@ -38,7 +38,7 @@ const CreateClanButton = () => {
   <Sheet>
    <SheetTrigger asChild>
     <Button className="bg-gradient-to-r from-transparent to-appcolor self-stretch mt-[33px] relative z-10">
-     Create clan
+     Soon
     </Button>
    </SheetTrigger>
 
@@ -52,7 +52,7 @@ const CreateClanButton = () => {
       className="w-[72px] h-[72px]"
      />
 
-     <h1 className="text-[26px] font-bold mt-5">Create clan</h1>
+     <h1 className="text-[26px] font-bold mt-5">Connect wallet</h1>
 
      <p className="text-sm text-center mt-2.5 max-w-[220px]">
       Invite friends to your community and earn dotcoins even faster
