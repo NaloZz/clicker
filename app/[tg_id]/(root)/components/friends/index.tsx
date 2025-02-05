@@ -20,8 +20,8 @@ const Friends = ({ tg_id, friends }: { tg_id: string; friends: User[] }) => {
 
 	const empty = friends.length === 0;
 
-	const ref_text = `🏆+2.5k WhatTapCoin as a first-time bonus
-💎+50k WhatTapCoin if you have Telegram Premium`;
+	const ref_text = `🏆+2.5k ULT100x point's as a first-time bonus
+💎+50k ULT100x point's if you have Telegram Premium`;
 
 	const ref_link = `https://t.me/${process.env.NEXT_PUBLIC_BOT_HANDLE}?start=rp_${tg_id}`;
 
