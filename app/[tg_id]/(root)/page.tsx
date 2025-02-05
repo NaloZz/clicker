@@ -43,23 +43,22 @@ export default async function Home({
           </div>
 
           {/* 🔥 Размытие + картинка огня */}
-          <EnergyBar user={user} />
-        </div>
+<div className="absolute bottom-0 left-0 w-full h-[120px] bg-opacity-50">
+  <img 
+    src="/whattapcoinmin.gif" 
+    alt="Fire Background" 
+    className="w-full h-full object-cover blur-lg opacity-80"
+  />
+</div>
 
-        <Shop user={user} />
+{/* 🔥 Радужный градиентный фон */}
+<div
+  className={cn(
+    "fixed bottom-0 left-0 w-screen h-screen z-0",
+    "[background:radial-gradient(ellipse_100%_80%_at_bottom,var(--app-color),transparent_100%)]",
+  )}
+/>
 
-        <Friends tg_id={tg_id} friends={user.referrals} />
-
-        <Missions user={user} referralsNumber={user.referrals.length} />
-
-
-        {/* 🔥 Радужный градиентный фон */}
-        <div
-          className={cn(
-            "fixed bottom-0 left-0 w-screen h-screen z-0",
-            "[background:radial-gradient(ellipse_100%_80%_at_bottom,var(--app-color),transparent_100%)]",
-          )}
-        />
       </main>
     );
   } catch (error) {
