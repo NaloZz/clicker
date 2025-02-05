@@ -51,7 +51,7 @@ const Score = ({ user }: { user: User }) => {
 			>
 				{formattedCount.map((text, index) => (
 					<Fragment key={index}>
-						<span suppressHydrationWarning className="font-mono">
+						<span suppressHydrationWarning className="font-[Montserrat] font-extrabold">
 							{text}
 						</span>
 						{index !== formattedCount.length - 1 && ","}
