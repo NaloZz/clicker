@@ -17,18 +17,12 @@
 
     --app-color: #ff7f00;
 
-    @apply p-0 m-0 min-w-0;
+    @apply p-0 m-0 min-w-0
   }
-
-  html, :root, body {
+ html, :root, body {
     @apply text-white bg-black;
     font-family: 'Montserrat', sans-serif; /* Или 'Exo 2' */
     font-weight: 800; /* extrabold */
     line-height: 1; /* leading-none */
-  }
-
-  /* Класс для градиента */
-  .gradient-bg {
-    background: radial-gradient(ellipse 100% 50% at center, var(--app-color), transparent 100%);
-  }
+}
 }
