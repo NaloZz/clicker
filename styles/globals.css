@@ -15,7 +15,7 @@
     -ms-user-select: none;     
     user-select: none;
 
-    --app-color: #ffcc00;
+    --app-color: #ff7f00;
 
     @apply p-0 m-0 min-w-0
   }
