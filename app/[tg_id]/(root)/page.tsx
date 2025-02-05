@@ -52,14 +52,6 @@ export default async function Home({
 
         <Missions user={user} referralsNumber={user.referrals.length} />
 
-        {/* 🔥 Размещение GIF-фона внизу всего */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/whattapcoinmin.gif"
-            alt="Fire Background"
-            className="w-full h-full object-cover object-bottom opacity-80 blur-lg"
-          />
-        </div>
 
         {/* 🔥 Радужный градиентный фон */}
         <div
