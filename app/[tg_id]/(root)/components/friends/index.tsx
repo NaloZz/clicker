@@ -48,7 +48,8 @@ const Friends = ({ tg_id, friends }: { tg_id: string; friends: User[] }) => {
 
 					{/* Удален блок с "Invite friends to get bonuses", теперь просто пустой контейнер */}
 					<div className="flex flex-col gap-3 relative z-10">
-						<div className="flex flex-col items-center justify-center p-4 gap-6 bg-white/10 rounded-2xl self-stretch">
+						<div className="flex flex-col items-center justify-center p-4 gap-6 bg-white/10 rounded-2xl backdrop-blur-3xl [-webkit-backdrop-filter:blur(64px)] self-stretch">
+
 							<div className="flex items-start gap-3.5 self-stretch">
 								<CoinIcon className="w-12 h-12" />
 
@@ -59,16 +60,14 @@ const Friends = ({ tg_id, friends }: { tg_id: string; friends: User[] }) => {
 										<CoinIcon className="w-4 h-4" />
 
 										<p
-											className="text-sm leading-[15px]"
-											style={{
-												color: "var(--app-color)", // Применяем основной цвет для награды
-											}}
-										>
-											<span className="text-white font-medium">
-												{non_premium_ref_reward.toLocaleString("en-US")}
-											</span>
-											&nbsp;for you and your friend
-										</p>
+    className="text-sm leading-[15px] text-white"
+>
+    <span className="font-medium">
+        {non_premium_ref_reward.toLocaleString("en-US")}
+    </span>
+    &nbsp;for you and your friend
+</p>
+
 									</div>
 								</div>
 							</div>
