@@ -87,11 +87,12 @@ const Friends = ({ tg_id, friends }: { tg_id: string; friends: User[] }) => {
 									<div className="flex items-end gap-1">
 										<CoinIcon className="w-4 h-4" />
 
-											<p
+										
+										<p
     className="text-sm leading-[15px] text-white"
 >
     <span className="font-medium">
-        {non_premium_ref_reward.toLocaleString("en-US")}
+        {premium_ref_reward.toLocaleString("en-US")}
     </span>
     &nbsp;for you and your friend
 </p>
