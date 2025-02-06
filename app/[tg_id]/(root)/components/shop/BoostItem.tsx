@@ -69,11 +69,7 @@ const BoostItem: React.FC<BoostItemProps> = ({
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <button
-          onClick={handlePurchase}
-          disabled={max || !available || isPurchasing}
-          className="flex items-center gap-3 w-full"
-        >
+        <button className="flex items-center gap-3 w-full" disabled={max || !available}>
           <div className="bg-white/5 rounded-lg p-4">
             <Image
               src={imageUrl}
@@ -144,8 +140,9 @@ const BoostItem: React.FC<BoostItemProps> = ({
             <Button
               onClick={handlePurchase}
               className="mt-8 self-stretch bg-gradient-to-r from-transparent to-appcolor"
+              disabled={max || !available || isPurchasing}
             >
-              Get
+              {isPurchasing ? `Подождите ${timeLeft}s` : "Get"}
             </Button>
           </SheetClose>
         </div>
