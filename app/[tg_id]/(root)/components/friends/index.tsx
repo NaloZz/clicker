@@ -59,7 +59,7 @@ const Friends = ({ tg_id, friends }: { tg_id: string; friends: User[] }) => {
                   <div className="flex items-end gap-1">
                     <CoinIcon className="w-4 h-4" />
 
-                    <p className="text-sm leading-[15px] text-white mt-2"> {/* Добавлен отступ сверху */}
+                    <p className="text-sm leading-[15px] text-white mt-1"> {/* Изменён отступ на mt-1 */}
                       <span className="font-medium">
                         {non_premium_ref_reward.toLocaleString("en-US")}
                       </span>
@@ -84,7 +84,7 @@ const Friends = ({ tg_id, friends }: { tg_id: string; friends: User[] }) => {
                   <div className="flex items-end gap-1">
                     <CoinIcon className="w-4 h-4" />
 
-                    <p className="text-sm leading-[15px] text-white mt-2"> {/* Добавлен отступ сверху */}
+                    <p className="text-sm leading-[15px] text-white mt-1"> {/* Изменён отступ на mt-1 */}
                       <span className="font-medium">
                         {premium_ref_reward.toLocaleString("en-US")}
                       </span>
