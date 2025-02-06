@@ -62,10 +62,13 @@ const ClanPage = async ({
 					</Link>
 
 					{clan.description && (
-    <p className="text-[15px] leading-none mt-5">
-        You are now in the clan. Invite friends and burn more!
-    </p>
+    <p className="text-[15px] leading-none mt-8 text-center">
+    You are now in the clan. <br />
+    Invite friends and burn more!
+</p>
+
 )}
+
 
 				</div>
 
