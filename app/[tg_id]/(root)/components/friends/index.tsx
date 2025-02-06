@@ -50,7 +50,8 @@ const Friends = ({ tg_id, friends }: { tg_id: string; friends: User[] }) => {
           <div className="flex flex-col gap-3 relative z-10">
             <div className="flex flex-col items-center justify-center p-4 gap-6 bg-white/10 rounded-2xl backdrop-blur-3xl [-webkit-backdrop-filter:blur(64px)] self-stretch">
 
-              <div className="flex items-start gap-3.5 self-stretch">
+              {/* Блок с "Invite friend" */}
+              <div className="flex items-start gap-3.5 self-stretch mt-3"> {/* Добавлен отступ сверху */}
                 <CoinIcon className="w-12 h-12" />
 
                 <div className="flex flex-col gap-0.5">
@@ -59,7 +60,7 @@ const Friends = ({ tg_id, friends }: { tg_id: string; friends: User[] }) => {
                   <div className="flex items-end gap-1">
                     <CoinIcon className="w-4 h-4" />
 
-                    <p className="text-sm leading-[15px] text-white mt-1"> {/* Изменён отступ на mt-1 */}
+                    <p className="text-sm leading-[15px] text-white mt-1"> {/* Добавлен отступ к тексту */}
                       <span className="font-medium">
                         {non_premium_ref_reward.toLocaleString("en-US")}
                       </span>
@@ -69,7 +70,8 @@ const Friends = ({ tg_id, friends }: { tg_id: string; friends: User[] }) => {
                 </div>
               </div>
 
-              <div className="flex items-start gap-3.5 self-stretch">
+              {/* Блок с "Friend with Telegram Premium" */}
+              <div className="flex items-start gap-3.5 self-stretch mt-3"> {/* Добавлен отступ сверху */}
                 <Image
                   src="/premium.png"
                   alt="premium"
@@ -84,7 +86,7 @@ const Friends = ({ tg_id, friends }: { tg_id: string; friends: User[] }) => {
                   <div className="flex items-end gap-1">
                     <CoinIcon className="w-4 h-4" />
 
-                    <p className="text-sm leading-[15px] text-white mt-1"> {/* Изменён отступ на mt-1 */}
+                    <p className="text-sm leading-[15px] text-white mt-1"> {/* Добавлен отступ к тексту */}
                       <span className="font-medium">
                         {premium_ref_reward.toLocaleString("en-US")}
                       </span>
