@@ -34,8 +34,8 @@ const ClanPage = async ({
 
 		const joined = String(searchParams.joined || "false") === "true";
 
-		const ref_text = `🏆+2.5k Whattap as a first-time bonus
-💎+50k Whattap if you have Telegram Premium`;
+		const ref_text = `🏆+2.5k ULT100x as a first-time bonus
+💎+50k ULT100x if you have Telegram Premium`;
 
 		const ref_link = `https://t.me/${process.env.NEXT_PUBLIC_BOT_HANDLE}?start=rp_${tg_id}_${clanId}`;
 
