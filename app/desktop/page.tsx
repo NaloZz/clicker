@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Coin from "@/components/main/Coin"; // Подключи нужные компоненты
+import Coin from "@/app/[tg_id]/(root)/components/main/Coin";
+
 
 const DesktopPage = () => {
 	const [isTelegram, setIsTelegram] = useState(false);
