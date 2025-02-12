@@ -37,7 +37,7 @@ const Missions = ({
 	{
 		title: "Specials",
 		missions: [
-						id: "grouptg",
+						{ id: "grouptg",
 					title: "Join our UTL100x TG channel",
 					reward: 50000,
 					imageUrl: "/logowhattap.png",
