@@ -37,14 +37,24 @@ const Missions = ({
 	{
 		title: "Specials",
 		missions: [
-			{
-				id: "grouptg",
-				title: "Join our ULT100x TG channel",
-				reward: 50000,
-				imageUrl: "/logowhattap.png",
-				href: "https://t.me/ult100x",
-				type: "external",
-			},
+						id: "grouptg",
+					title: "Join our UTL100x TG channel",
+					reward: 50000,
+					imageUrl: "/logowhattap.png",
+					href: "https://t.me/ult100x",
+					channelId: -1002229977266,
+					type: "telegram",
+				},
+{
+					id: "grouptg1",
+					title: "Join our WhaTap Ru TG channel",
+					reward: 50000,
+					imageUrl: "/logowhattap.png",
+					href: "https://t.me/grind_hub",
+					channelId: -1002000500157,
+					type: "telegram",
+				},
+
 		],
 	},
 ]; // ✅ Лишние `]` и `}` убраны
