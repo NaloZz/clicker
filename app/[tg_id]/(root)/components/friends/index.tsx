@@ -56,6 +56,10 @@ const Friends = ({ tg_id, friends }: { tg_id: string; friends: User[] }) => {
 
                 <div className="flex flex-col gap-0.5">
                   <p className="font-medium">Invite friend</p>
+
+                  <div className="flex items-end gap-1">
+                    <CoinIcon className="w-4 h-4" />
+
                     <p className="text-sm leading-[15px] text-white mt-1"> {/* Отступ mt-1 для текста */}
                       <span className="font-medium">
                         {non_premium_ref_reward.toLocaleString("en-US")}
@@ -78,6 +82,10 @@ const Friends = ({ tg_id, friends }: { tg_id: string; friends: User[] }) => {
 
                 <div className="flex flex-col gap-0.5">
                   <p className="font-medium">Friend with Telegram Premium</p>
+
+                  <div className="flex items-end gap-1">
+                    <CoinIcon className="w-4 h-4" />
+
                     <p className="text-sm leading-[15px] text-white mt-1"> {/* Отступ mt-1 для текста */}
                       <span className="font-medium">
                         {premium_ref_reward.toLocaleString("en-US")}
